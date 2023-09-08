@@ -3,7 +3,7 @@ import mailChannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
 export const onRequest: PagesFunction = mailChannelsPlugin({
   personalizations: [
     {
-      to: [{ name: "ACME Support", email: "alessandro.malzanini@gmail,com" }],
+      to: [{ name: "ACME Support", email: "alessandro.malzanini@wecanconsulting.it" }],
     },
   ],
   from: {

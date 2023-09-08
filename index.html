@@ -1,0 +1,557 @@
+<?php 
+if(isset($_POST['submit'])){
+    $to = "alessandro.malzanini@gmail.com"; // this is your Email address
+    $from = $_POST['email']; // this is the sender's Email address
+    $first_name = $_POST['addr'];
+    $last_name = $_POST['meter'];
+    $locali = $_POST['locali'];
+    $stato = $_POST['stato'];
+    $subject = "Form submission";
+    //$subject2 = "Copy of your form submission";
+    $message = $first_name . " " . $last_name . " wrote the following:" . "\n\n" . $_POST['locali'];
+    //$message2 = "Here is a copy of your message " . $first_name . "\n\n" . $_POST['message'];
+
+    $headers = "From:" . $from;
+    $headers2 = "From:" . $to;
+    mail($to,$subject,$message,$headers);
+    //mail($from,$subject2,$message2,$headers2);
+    echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
+    // You can also use header('Location: thank_you.php'); to redirect to another page.
+    }
+?>
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Theme Starz">
+
+    <link href="assets/fonts/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css">
+    <!--<link rel="stylesheet" href="assets/css/flexslider.css" type="text/css">-->
+
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+    <title>Condio - Real Estate HTML Landing Page</title>
+
+</head>
+
+<body data-spy="scroll" data-target=".navigation" data-offset="90">
+<!-- Wrapper -->
+<section id="home"></section>
+<div class="wrapper">
+    <div class="navigation fixed">
+        <div class="container">
+            <header class="navbar" id="top" role="banner">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand nav" id="brand">
+                        <a href="index.html"><img src="assets/img/logo.png" alt="brand"></a>
+                    </div>
+                </div>
+                <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#home">Home</a></li>
+                        <li><a href="#features">Why Condio</a></li>
+                        <li><a href="#features-boxes">Features</a></li>
+                        <li><a href="#footer">Contact</a></li>
+                    </ul>
+                </nav><!-- /.navbar collapse-->
+            </header><!-- /.navbar -->
+        </div><!-- /.container -->
+    </div><!-- /.navigation -->
+
+    <section id="slider">
+        <div class="flexslider loading">
+            <div id="loading-icon"><i class="fa fa-cog fa-spin"></i></div>
+            <ul class="slides">
+                <li class="slide"><img src="assets/img/slide-01.jpg" alt=""></li>
+                <!--<li class="slide"><img src="assets/img/slide-02.jpg" alt=""></li>
+                <li class="slide"><img src="assets/img/slide-03.jpg" alt=""></li>-->
+            </ul><!-- /.slides -->
+        </div><!-- /.flexslider -->
+        <div class="slider-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8">
+                        <div class="title">
+                            <h2>Fatti pagare quando non la usi!</h2>
+                            <figure class="subtitle">Da 1 settmana a 365 giorni/anno, decidi tu quanto guadagnare</figure>
+                            <i class="fa fa-arrow-circle-o-right"></i>
+                        </div><!-- /.title -->
+                    </div><!-- /.col-md-8 -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="form-slider-wrapper">
+                            <header>
+                                <h3>Trasforma la tua casa in un</h3>
+                                <h1>Investimento!</h1>
+                            </header>
+                            <hr>
+                            <form role="form" id="form-slider" action="" method="post">
+                                <div class="form-group">
+                                    <label for="email">Indirizzo email<em>*</em></label>
+                                    <input type="text" class="form-control" id="email" name="email" required>
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    <label for="addr">Indirizzo immobile<em>*</em></label>
+                                    <input type="text" class="form-control" id="addr" name="addr" placeholder="es: Via Caduti Del Lavoro 23 25124 Brescia" required>
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    <label for="meter">Metratura<em>*</em></label>
+                                    <input type="text" class="form-control" id="meter" name="meter" placeholder="es: 100mq" required>
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    <label for="locali">Numero locali<em>*</em></label>
+                                    <input type="text" class="form-control" id="locali" name="locali" placeholder="es: 3" required>
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    <label for="stato">Stato costruzione<em>*</em></label>
+                                    <input type="text" class="form-control" id="stato" name="stato" placeholder="es: Buono/Da ristrutturare ecc" required>
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    <div id="form-slider-status"></div>
+                                    <button type="submit" id="form-slider-submit" class="btn btn-default">Invia</button>
+                                    <!--<input type="submit" id="form-slider-submit" class="btn btn-default">Invia</input>-->
+                                </div><!-- /.form-group -->
+                            </form><!-- /#form-slider -->
+                            <figure>*Required Fields</figure>
+                        </div><!-- /.form-slider-wrapper -->
+                    </div><!-- /.col-md-4 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.slider-banner -->
+    </section><!-- /#slider -->
+    <section id="features" class="block">
+        <div class="container">
+            <header><h3>Perchè ti conviene condio:</h3></header>
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <ul class="features-list">
+                        <li><strong>Zero</strong> commissioni</li>
+                        <li>Nessuna spesa burocratica</li>
+                        <li>Mantieni la proprietà dell'immobile</li>
+                        <li>Garanzia dei pagamenti</li>
+                        <li>Nessun danno all'immobile</li>
+                    </ul><!-- /.features-list -->
+                </div><!-- /.col-md-8 -->
+                <div class="col-md-8 col-sm-8">
+                    <div class="image-carousel">
+                        <div class="image-carousel-slide">
+                            <div class="row">
+                                <div class="col-md-5 col-sm-5">
+                                    <img src="assets/img/features-slide-01.jpg" alt="">
+                                </div>
+                                <div class="col-md-7 col-sm-7">
+                                    <br>
+                                    <h4>Relax, non devi più preoccuparti di vendere casa</h4>
+                                    <p>Nel senso che con condo avrai un doppio vantaggio, da una parte la proprietà dell'immobile e dall'altro il guadagno che avresti da una vendita vera e propria, non devi neanche preoccuparti delle complesse procedure burocratiche o i costi burocratici..</p>
+                                    <a href="assets/img/box-image-02.jpg" class="btn btn-framed image-popup">Calcola il ricavo<span class="fa fa-arrow-right"></span></a>
+                                </div>
+                            </div><!-- /.row -->
+                        </div><!-- /.image-carousel-slide -->
+                        <div class="image-carousel-slide">
+                            <div class="row">
+                                <div class="col-md-7 col-sm-7">
+                                    <br><br>
+                                    <h4>Sorridi, stai per conoscere altri amanti di casa tua</h4>
+                                    <p>Per risparmiare tempo e massimizzare il prezzo della tua casa, ti proponiamo solo gli acquirenti interessati. Per vendere casa in poco tempo e ricevere liquidità immediata, l'offerta te la facciamo direttamente noi.</p>
+                                    <a href="assets/img/box-image-02.jpg" class="btn btn-framed image-popup">Calcola il ricavo <span class="fa fa-arrow-right"></span></a>
+                                </div>
+                                <div class="col-md-5 col-sm-5">
+                                    <img src="assets/img/features-slide-02.jpg" alt="">
+                                </div>
+                            </div><!-- /.row -->
+                        </div><!-- /.image-carousel-slide -->
+                        <div class="image-carousel-slide">
+                            <div class="row">
+                                <div class="col-md-5 col-sm-5">
+                                    <img src="assets/img/features-slide-03.jpg" alt="">
+                                </div>
+                                <div class="col-md-7 col-sm-7">
+                                    <br><br>
+                                    <h4>Vendi quote di casa al miglior prezzo di mercato</h4>
+                                    <p>Vogliamo prenderci cura di te dicendoti sempre le cose come stanno, e come stanno andando.<br><br>Sai esattamente come calcoliamo il valore della tua casa e come si posiziona rispetto al mercato. E hai sempre tutti gli aggiornamenti a portata di mano.</p>
+                                    <a href="assets/img/box-image-02.jpg" class="btn btn-framed image-popup">Calcola il ricavo <span class="fa fa-arrow-right"></span></a>
+                                </div>
+                            </div><!-- /.row -->
+                        </div><!-- /.image-carousel-slide -->
+                        <div class="image-carousel-slide">
+                            <div class="row">
+                                <div class="col-md-7 col-sm-7">
+                                    <br><br>
+                                    <h4>Comodo, basta a documenti e burocrazia dispendiosa</h4>
+                                    <p>Per vendere casa, non devi fare mille ricerche: le facciamo noi per te.<br>Burocrazia, pile di documenti, informazioni da raccogliere, tutto quello che ti serve davvero per vendere casa lo raccogliamo noi, seguendoti passo dopo passo.</p>
+                                    <a href="assets/img/box-image-02.jpg" class="btn btn-framed image-popup">Calcola il ricavo <span class="fa fa-arrow-right"></span></a>
+                                </div>
+                                <div class="col-md-5 col-sm-5">
+                                    <img src="assets/img/features-slide-04.jpg" alt="">
+                                </div>
+                            </div><!-- /.row -->
+                        </div><!-- /.image-carousel-slide -->
+                    </div><!-- /.image-carousel -->
+                </div><!-- /.col-md-8 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /#features .block -->
+    <section id="features-boxes" class="block background-color-grey-light">
+        <div class="container">
+            <header><h3>La nostra promessa</h3></header>
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="feature-box">
+                        <header>
+                            <img src="assets/img/icon-01.png" alt="">
+                            <h4>Una community di veri appassionati</h4>
+                        </header>
+                        <p>Fresh air, singing birds during the day and peaceful silence during the night.
+                            Let your life surrounds by the nature.
+                        </p>
+                    </div><!-- /.feature-box -->
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4 col-sm-4">
+                    <div class="feature-box">
+                        <header>
+                            <img src="assets/img/icon-02.png" alt="">
+                            <h4>Il miglior investimento immobiliare</h4>
+                        </header>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus,
+                            risus sit amet auctor sodales, justo erat tempor eros, non
+                        </p>
+                    </div><!-- /.feature-box -->
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4 col-sm-4">
+                    <div class="feature-box">
+                        <header>
+                            <img src="assets/img/icon-03.png" alt="">
+                            <h4>La tua casa è al sicuro. Copertura 24/7 </h4>
+                        </header>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus,
+                            risus sit amet auctor sodales, justo erat tempor eros, non
+                        </p>
+                    </div><!-- /.feature-box -->
+                </div><!-- /.col-md-4 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /#features-boxes .block -->
+    <section id="boxes" class="block background-color-grey-light">
+        <div class="container">
+            <div class="box">
+                <div class="image width-50 pull-left">
+                    <img src="assets/img/box-image-01.jpg" class="top-50" alt="">
+                </div>
+                <div class="description width-50">
+                    <div class="description-wrapper">
+                        <header><h3>Carlo pensa che Condio sia l'innovazione che mancava</h3></header>
+                        <p><i>“Ho dovuto superare lo scetticismo di affidarmi ad una realtà nuova con un business model completamente diverso.<br>Alla fine la tecnologia innovativa di condio ha pagato e ne stà valendo decisamente la pena”</i></p>
+                        <a href="#home" class="btn roll">Scopri quanto puoi guadagnare</a>
+                    </div>
+                </div><!-- /.description -->
+            </div><!-- /.box -->
+            <div class="box">
+                <div class="description width-30 pull-left">
+                    <div class="description-wrapper top-180">
+                        <header><h3>Maria dice tanto guadagno senza burocrazia</h3></header>
+                        <p><i>“Condio offre un ricavo chiaro la possibilità di annullare i tempi di vendita grazie ad una idea innovativa. Questo elimina molte preoccupazioni e infinite spese.”</i></p>
+                        <a href="#home" class="btn roll">Scopri quanto puoi guadagnare</a>
+                    </div>
+                </div><!-- /.description -->
+                <div class="image width-70">
+                    <img src="assets/img/box-image-02.jpg" alt="">
+                </div>
+            </div><!-- /.box -->
+            <section class="video">
+                <!--<iframe src="//player.vimeo.com/video/34741214?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
+                <img src="assets/img/box-image-02.jpg" width="100%" height="500" alt="">
+            </section>
+            <div class="box with-empty-space">
+                <div class="width-40 pull-left">
+                    <div class="empty-space"></div>
+                </div>
+                <div class="description width-60">
+                    <div class="description-wrapper">
+                        <header><h3>Per Giovanni è spensieratezza e sicurezza</h3></header>
+                        <p><i>“Ho scelto Condio sopratutto per la velocità: i tradizionali sistemi di vendita o affittanza non riuscivano a soddisfare le mie esigenze.”</i></p>
+                        <a href="#home" class="btn roll">Scopri quanto puoi guadagnare</a>
+                    </div>
+                </div><!-- /.description -->
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </section><!-- /#boxes -->
+    <section id="features-boxes" class="block background-color-grey-light">
+        <div class="container">
+            <header><h3>Quando ti conviene utilizzare condio</h3></header>
+            <p><strong>Siamo un’azienda PropTech europea e, grazie al nostro unico ed innovativo modello di business, riusciamo ad incrociare i bisogni di chi vuole far fruttare il proprio immobile con i desideri di chi intende possedere una quota di utilizzo per case che ama, guidandoti in tutto il processo e offrendoti un’esperienza semplice, sicura e trasparente.</strong></p>
+            <br><br><br>
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="feature-box">
+                        <header>
+                            <img src="https://sundae.com/wp-content/uploads/2019/05/retirement_icon.png" height="60" width="60">
+                        </header>
+                        <br>
+                        <p>Vacanza lunga? Lascia che la tua atttuale abitazione ti ripaghi il meritato relax</p>
+                    </div><!-- /.feature-box -->
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4 col-sm-4">
+                    <div class="feature-box">
+                        <header>
+                            <img src="https://sundae.com/wp-content/uploads/2019/01/icon-home.svg" height="60" width="60" alt="">
+                        </header>
+                        <br>
+                        <p>Proprietà poco utilizzata? Falla fruttare fino al 100% del suo valore</p>
+                    </div><!-- /.feature-box -->
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4 col-sm-4">
+                    <div class="feature-box">
+                        <header>
+                            <img src="https://sundae.com/wp-content/uploads/2019/01/icon-tools.svg" height="60" width="60" alt="">
+                        </header>
+                        <br>
+                        <p>Spese di ristrutturazione o ampliamento? Affrontale assieme ad altri amanti della tua casa</p>
+                    </div><!-- /.feature-box -->
+                </div><!-- /.col-md-4 -->
+            </div><!-- /.row -->
+            <div class="row" style="padding-top: 30px;">
+                <div class="col-md-4 col-sm-4">
+                    <div class="feature-box">
+                        <header>
+                            <img src="https://sundae.com/wp-content/uploads/2019/01/icon-trolley.svg" height="60" width="60" alt="">
+                        </header>
+                        <br>
+                        <p>Viaggi per piacere o per lavoro? Qualcuno si prenderà cura della tua abitazione, e tu ci guadagni
+                        </p>
+                    </div><!-- /.feature-box -->
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4 col-sm-4">
+                    <div class="feature-box">
+                        <header>
+                            <img src="https://sundae.com/wp-content/uploads/2019/01/icon-warning.svg" height="60" width="60" alt="">
+                        </header>
+                        <br>
+                        <p>Problemi a vendere o affittare casa con i classici mezzi? Semplificati la vita e inizia a guadagnare da subito
+                        </p>
+                    </div><!-- /.feature-box -->
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4 col-sm-4">
+                    <div class="feature-box">
+                        <header>
+                            <img src="https://sundae.com/wp-content/uploads/2019/01/icon-wallet.svg" height="60" width="60" alt="">
+                        </header>
+                        <br>
+                        <p>Un investimento che ti garantisce entrate continue e sicure, mentre ti godi la comodità delle tue abitazioni
+                        </p>
+                    </div><!-- /.feature-box -->
+                </div><!-- /.col-md-4 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /#features-boxes .block -->
+    <section id="properties" class="block">
+        <div class="container">
+            <header><h3>Alcuni esempi dagli utenti condio</h3></header>
+            <div class="row">
+                <div class="col-md-3 col-sm-3">
+                    <div class="property-wrapper">
+                        <div class="property">
+                            <!--<a href="assets/img/box-image-02.jpg" class="image-popup">-->
+                                <div class="box">
+                                    <img src="assets/img/property-01.jpg" alt="">
+                                </div>
+                            <!--</a>-->
+                            <header><h4>Firenze</h4></header>
+                            <div class="description">
+                                <dl>
+                                    <dt>Piani:</dt>
+                                    <dd>2</dd>
+                                    <dt>Stanze:</dt>
+                                    <dd>4</dd>
+                                    <dt>Area:</dt>
+                                    <dd>110 m<sup>2</sup></dd>
+                                    <dt>Durata:</dt>
+                                    <dd>5 anni</dd>
+                                    <dt>Giorni/anno:</dt>
+                                    <dd>60</dd>
+                                    <dt>Guadagno:</dt>
+                                    <dd><strong>€89.900</strong></dd>
+                                </dl>
+                            </div><!-- /.description -->
+                        </div><!-- /.property -->
+                    </div><!-- /.property-wrapper -->
+                </div><!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-3">
+                    <div class="property-wrapper">
+                        <div class="property">
+                            <a href="assets/img/box-image-02.jpg" class="image-popup">
+                                <div class="image-wrapper">
+                                    <img src="assets/img/property-02.jpg" alt="">
+                                </div>
+                            </a>
+                            <header><h4>Bergamo</h4></header>
+                            <div class="description">
+                                <dl>
+                                    <dt>Piani:</dt>
+                                    <dd>1</dd>
+                                    <dt>Stanze:</dt>
+                                    <dd>3</dd>
+                                    <dt>Area:</dt>
+                                    <dd>80 m<sup>2</sup></dd>
+                                    <dt>Durata:</dt>
+                                    <dd>5 anni</dd>
+                                    <dt>Giorni/anno:</dt>
+                                    <dd>30</dd>
+                                    <dt>Guadagno:</dt>
+                                    <dd><strong>€35.000</strong></dd>
+                                </dl>
+                            </div><!-- /.description -->
+                        </div><!-- /.property -->
+                    </div><!-- /.property-wrapper -->
+                </div><!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-3">
+                    <div class="property-wrapper">
+                        <div class="property">
+                            <a href="assets/img/box-image-02.jpg" class="image-popup">
+                                <div class="image-wrapper">
+                                    <img src="assets/img/property-03.jpg" alt="">
+                                </div>
+                            </a>
+                            <header><h4>Lago di Garda</h4></header>
+                            <div class="description">
+                                <dl>
+                                    <dt>Piani:</dt>
+                                    <dd>2</dd>
+                                    <dt>Stanze:</dt>
+                                    <dd>5</dd>
+                                    <dt>Area:</dt>
+                                    <dd>160 m<sup>2</sup></dd>
+                                    <dt>Durata:</dt>
+                                    <dd>10 anni</dd>
+                                    <dt>Giorni/anno:</dt>
+                                    <dd>365</dd>
+                                    <dt>Guadagno:</dt>
+                                    <dd><strong>€610.000</strong></dd>
+                                </dl>
+                            </div><!-- /.description -->
+                        </div><!-- /.property -->
+                    </div><!-- /.property-wrapper -->
+                </div><!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-3">
+                    <div class="property-wrapper">
+                        <div class="property">
+                            <a href="assets/img/box-image-02.jpg" class="image-popup">
+                                <div class="image-wrapper">
+                                    <img src="assets/img/property-04.jpg" alt="">
+                                </div>
+                            </a>
+                            <header><h4>Roma</h4></header>
+                            <div class="description">
+                                <dl>
+                                    <dt>Piani:</dt>
+                                    <dd>1</dd>
+                                    <dt>Stanze:</dt>
+                                    <dd>3</dd>
+                                    <dt>Area:</dt>
+                                    <dd>110 m<sup>2</sup></dd>
+                                    <dt>Durata:</dt>
+                                    <dd>10 anni</dd>
+                                    <dt>Giorni/anno:</dt>
+                                    <dd>120</dd>
+                                    <dt>Guadagno:</dt>
+                                    <dd><strong>€193.200</strong></dd>
+                                </dl>
+                            </div><!-- /.description -->
+                        </div><!-- /.property -->
+                    </div><!-- /.property-wrapper -->
+                </div><!-- /.col-md-3 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /#properties -->
+    <section id="testimonials" class="block">
+        <div class="container" style="text-align: center;">
+            <a href="#home" class="btn roll">Scopri quanto puoi guadagnare</a>
+        </div><!-- /.container -->
+    </section><!-- /#testimonials -->
+    <hr>
+    <section id="contact" class="block background-color-grey-dark has-dark-background">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <header><h3>Our Agent</h3></header>
+                    <section class="agent">
+                        <div class="agent-id">
+                            <img src="assets/img/agent.jpg" alt="">
+                            <div class="agent-wrapper">
+                                <h4>John Doe</h4>
+                                <p>Aliquam sit amet augue non arcu mollis suscipit. Quisque scelerisque</p>
+                            </div>
+                        </div>
+                        <div class="agent-contact">
+                            <div><strong>Phone:</strong> (123) 456 789 000</div>
+                            <div><strong>E-mail:</strong> <a href="#">john.doe@example.com</a></div>
+                            <div><strong>Skype:</strong> John Doe</div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <header><h3>Contact Form</h3></header>
+                    <form role="form" id="form-contact" method="post" action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="contact-form-name">Your Name<em>*</em></label>
+                                    <input type="text" class="form-control" id="contact-form-name" name="contact-form-name" required>
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-md-6 -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="contact-form-email">Your Email<em>*</em></label>
+                                    <input type="email" class="form-control" id="contact-form-email" name="contact-form-email" required>
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-md-6 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="contact-form-message">Your Message<em>*</em></label>
+                                    <textarea class="form-control" id="contact-form-message" rows="6" name="contact-form-message" required></textarea>
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-md-12 -->
+                        </div><!-- /.row -->
+                        <div class="form-group">
+                            <button type="submit" class="btn pull-right btn-large" id="form-contact-submit">Send a Message</button>
+                        </div><!-- /.form-group -->
+                        <div id="form-status"></div>
+                    </form><!-- /#form-contact -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <div class="container">
+            <figure>(C) ThemeStarz</figure>
+        </div>
+    </footer>
+</div>
+<!-- end Wrapper -->
+<script type="text/javascript" src="assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/js/retina-1.1.0.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="assets/js/scrollReveal.min.js"></script>
+<script type="text/javascript" src="assets/js/smoothscroll.js"></script>
+
+<script type="text/javascript" src="assets/js/custom.js"></script>
+
+</body>
